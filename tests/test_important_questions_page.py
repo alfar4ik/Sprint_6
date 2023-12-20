@@ -1,7 +1,9 @@
+import allure
 import pytest
-from pages.base_page import BasePage
 from pages.important_questions_page import ImportantQuestionsPage, ImportantQuestionsLocators, ExpectedTexts
 from conftest import driver_init
+
+
 
 class TestImportantQuestions:
 
@@ -18,11 +20,13 @@ class TestImportantQuestions:
             (ImportantQuestionsLocators.DELIVERY_OUTSIDE_MKAD_QUESTION, ExpectedTexts.DELIVERY_OUTSIDE_MKAD),
         ]
     )
+    @allure.title("Тест кликабельности вопросов и соответствия текста ответов в разделе 'Важные вопросы'")
+    @allure.description("Проверяем, что при клике на каждый вопрос в разделе отображается соответствующий текст ответа")
     def test_click_on_question(self, driver_init, question_locator, expected_text):
-        BasePage(driver_init).open_url("https://qa-scooter.praktikum-services.ru")
+        driver_init.get("https://qa-scooter.praktikum-services.ru")
         important_questions_tab = ImportantQuestionsPage(driver_init)
-        found_element = important_questions_tab.click_question_and_verify_text(question_locator, expected_text)
-        assert found_element, "Ожидаемый текст не был найден после клика."
+        is_text_present = important_questions_tab.click_important_question_and_verify_text(question_locator, expected_text)
+        assert is_text_present, f"Ожидаемый текст '{expected_text}' не был найден после клика на вопрос."
 
 
 
