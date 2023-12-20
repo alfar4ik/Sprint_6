@@ -1,7 +1,7 @@
 ﻿import pytest
 import allure
 from pages.order_page import OrderPageHelper, OrderPageLocators
-from conftest import driver_init
+
 
 
 class TestOrderPage:

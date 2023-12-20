@@ -1,7 +1,7 @@
 import allure
 import pytest
 from pages.important_questions_page import ImportantQuestionsPage, ImportantQuestionsLocators, ExpectedTexts
-from conftest import driver_init
+
 
 
 

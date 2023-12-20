@@ -1,6 +1,6 @@
 import allure
 from pages.order_page import OrderPageHelper, ConfigUrl
-from conftest import driver_init
+
 
 class TestRedirectionPage:
 
